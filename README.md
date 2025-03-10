@@ -9,19 +9,42 @@ This repository demonstrates two implementations of a simple WordPress plugin th
 
 ---
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Important Note on WordPress Database Handling](#important-note-on-wordpress-database-handling)
+- [Differences](#differences)
+- [Installation & Testing](#installation--testing)
+  - [Installation](#installation)
+  - [Shortcode Usage](#shortcode-usage)
+  - [Test Scenarios](#test-scenarios)
+- [Why Security Matters](#why-security-matters)
+- [Additional Resources](#additional-resources)
+- [Final Note](#final-note)
+- [License](#license)
+
+---
+
 ## Overview
-In today's digital landscape, with WordPress powering millions of websites and its user base growing year after year, it is more important than ever for developers to secure their plugins. This repository demonstrates two implementations of a simple WordPress plugin that retrieves user data based on URL parameters:
 
-- vulnerable: Uses unsanitized public input directly in SQL queries, leaving your site wide open to SQL Injection attacks.
-- secure: Implements a PDO-based approach with genuine prepared statements that securely handle user input.
+In today's digital landscape—with WordPress powering millions of websites and its user base growing year after year—it is more important than ever for developers to secure their plugins. This repository demonstrates two implementations of a simple WordPress plugin that retrieves user data based on URL parameters:
 
-By contrasting these two approaches, we underscore that secure coding is essential when dealing with public input. An insecure plugin can turn your website into an open invitation for hackers, while a well-secured plugin helps maintain the integrity and safety of your site and its users.
+- **vulnerable:** Uses unsanitized public input directly in SQL queries, leaving your site wide open to SQL Injection attacks.
+- **secure:** Implements a PDO-based approach with genuine prepared statements that securely handle user input.
+
+By contrasting these two approaches, we emphasize that secure coding is essential when processing public input. An insecure plugin can turn your website into an open invitation for hackers, while a well-secured plugin helps maintain the integrity and safety of your site and its users.
 
 **Key Advantages of the Secure Approach:**
 
 - **True Prepared Statements:** Parameters are bound safely, keeping user input separate from the SQL command.
 - **Enhanced Security:** Prevents SQL Injection vulnerabilities even if the input isn’t additionally sanitized.
 - **Database Flexibility:** Easier migration between different database systems (e.g., MySQL, PostgreSQL, SQLite).
+
+---
+
+## Important Note on WordPress Database Handling
+
+The native WordPress `$wpdb->prepare()` method is not a true prepared statement implementation like those provided by PDO. It uses a sprintf-like substitution mechanism to escape inputs, which does not fully separate the query structure from user data. In contrast, our secure approach leverages genuine PDO prepared statements, ensuring that parameters are bound securely at the database level. This offers a higher level of protection against SQL injection attacks.
 
 ---
 
@@ -70,7 +93,7 @@ By contrasting these two approaches, we underscore that secure coding is essenti
 
 > **“An insecure plugin is like an open window in winter – anyone can get in, and you’ll be left shivering!”**
 
-If your plugin processes public input without proper safeguards, you’re essentially inviting hackers inside. By using true prepared statements (e.g., with PDO), you help ensure that even if user input is malicious, it cannot alter the SQL commands executed by your database.
+If your plugin processes public input without proper safeguards, you’re essentially inviting hackers inside. By using true prepared statements (e.g., with PDO), you help ensure that even if user input is malicious, it cannot alter the SQL commands executed by your database. With WordPress growing year after year and its vast audience, securing plugins is more critical than ever.
 
 ---
 
@@ -86,22 +109,21 @@ If your plugin processes public input without proper safeguards, you’re essent
 
 This demo is designed to drive home the importance of secure coding practices in WordPress plugin development. Developers: **Make your plugins safe if they handle public input!** Don't let your code be an open invitation for hackers.
 
-**Misk:**
+**Notes:**
 - This repository contains a demo project that contrasts an insecure plugin with a secure one.
 - *This README.md documentation was written with the help of OpenAI's ChatGPT o3-mini.*
 
---- 
-
+---
 
 ## License
 
 ```
 MIT License
 
-Copyright (c) 2008 Volkan Kücükbudak
+Copyright (c) 2025 Volkan Kücükbudak
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
+of this software and associated documentation files (the \"Software\"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
@@ -110,7 +132,7 @@ furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included
 in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -118,6 +140,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ```
-
-
 
