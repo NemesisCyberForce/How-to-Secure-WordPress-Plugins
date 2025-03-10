@@ -1,11 +1,9 @@
 # How to Secure WordPress Plugins
 
-
 This repository demonstrates two implementations of a simple WordPress plugin that retrieves user data based on a URL parameter:
-
 - **vulnerable:** Directly uses `$_GET` input in SQL queries without proper sanitization – leaving the door wide open for SQL injection attacks.
 - **secure:** Implements a PDO-based approach with genuine prepared statements to securely handle public input.
-**⚠️ Warning:** The **vulnerable** version is intentionally insecure. **DO NOT INSTALL ON PUBLIC SERVERS!**
+
 
 ---
 
@@ -59,6 +57,9 @@ The native WordPress `$wpdb->prepare()` method is not a true prepared statement 
 ---
 
 ## Installation & Testing
+
+> [!WARNING]
+>  The **vulnerable** version is intentionally insecure. **DO NOT INSTALL ON PUBLIC SERVERS!**
 
 ### Installation
 
