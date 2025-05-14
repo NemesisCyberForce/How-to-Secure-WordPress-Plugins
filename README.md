@@ -1,6 +1,6 @@
 # How to secure WordPress Plugins (like a pro)
 
-This repository demonstrates two implementations of a simple WordPress plugin that retrieves user data based on a URL parameter:
+This repository demonstrates two implementations of a simple WordPress plugin that retrieves user data based on a URL parameter. Considering that WordPress powers most websites globally, this project is essential for highlighting and addressing the critical security gaps often found in such systems.
 - **vulnerable:** Directly uses `$_GET` input in SQL queries without proper sanitization – leaving the door wide open for SQL injection attacks.
 - **secure:** Implements a PDO-based approach with genuine prepared statements to securely handle public input.
 
